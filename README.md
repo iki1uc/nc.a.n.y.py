@@ -1,132 +1,17 @@
-# MANIPULATOR · iki1uc Layer 7.3
-UNI‑neutrale Bestimmungsinstanz für ATOM‑Verhalten
-
-MANIPULATOR ist der Layer, der im iki1uc‑System die Atom‑Einheiten
-unter allen Umständen bestimmt – auch unter Umständen, die definierbar,
-vorstellbar oder NICHT vorstellbar sind.
-
-PAIRING‑ROLE (Layer 7.2) definiert Rollen.
-MANIPULATOR (Layer 7.3) definiert Bestimmung.
-
-MANIPULATOR löst das Problem, das PAIRING‑ROLE nicht abdeckt:
-spontane Abweichung von Atom‑Verhalten.
-
----
-
-## 1. Warum MANIPULATOR existiert
-
-Atome tun nicht freiwillig, was sie tun.
-Sie zeigen zwei messbare Zustände:
-
-- Wirbel‑Atom → spontane Abweichung
-- Langweil‑Atom → keine spontane Abweichung
-
-MANIPULATOR erkennt diese Abweichungen und bestimmt das Atom neutral.
-
-PAIRING‑ROLE hat keine Rolle für:
-- Abweichungs‑Erkennung
-- Abweichungs‑Korrektur
-- Atom‑Zwang
-- UNI‑Neutralität
-- spontane Wirbel‑Detektion
-
-MANIPULATOR füllt diese Lücke.
-
----
-
-## 2. Dateien
-
-### **monopoliter.js**
-Atom‑Einheit  
-Reine Daten: pos, dir, val, force, tick  
-Keine Logik, keine Reaktion, keine Bestimmung.
-
-### **atom.core.js**
-Atom‑Reaktion  
-pulse() → Tick  
-react() → Kraft  
-balance() → Stabilität  
-Reagiert, aber bestimmt nicht.
-
-### **respo.atom.js**
-RESPO‑Bestimmung  
-setDir(), setVal(), setPos()  
-pulse(), react(), balance()  
-RESPO steuert Atom, aber erkennt keine Abweichung.
-
-### **manipulator.js**
-Fehlende Instanz  
-Erkennt Abweichung  
-Erzwingt Richtung, Wert, Position  
-Neutralisiert Wirbel  
-Stabilisiert Langweil  
-UNI‑neutral unter allen Umständen.
-
-### **index.html**
-Visualisierung der Atom‑Szene (optional)
-
-### **group.html**
-Gruppen‑Szene für mehrere Atome (optional)
-
----
-
-## 3. Messbare Abweichung (Wirbel‑Detektion)
-
-Ein Atom wird wirbelnd registriert, wenn eine spontane Abweichung auftritt:
-
-1. Richtungsabweichung  
-2. Impulsfluktuation  
-3. Positionssprung  
-4. Tick‑Unregelmäßigkeit  
-
-Wenn keine Abweichung auftritt → Langweil‑Atom.
-
-Diese vier Werte sind UNI‑neutral messbar.
-
----
-
-## 4. MANIPULATOR‑ROLE (Layer 7.3)
-
-**Symbol:** ◉↺◈  
-(Kern + Bewegung + Kontrolle)
-
-**Funktion:**
-- erkennt spontane Abweichung  
-- korrigiert spontane Abweichung  
-- bestimmt Atom unter allen Umständen  
-- wirkt über PAIRING‑ROLE  
-- wirkt zwischen PAIRING‑SYNC und PAIRING‑MAP  
-- garantiert UNI‑Neutralität  
-
----
-
-## 5. Pipeline
-
-monopoliter
-↓
-atom.core
-↓
-respo.atom
-↓
-MANIPULATOR (Layer 7.3)
-
-
-MANIPULATOR ist die neutrale Oberinstanz über Atom‑Verhalten.
-
----
-
-## 6. Status
-
-MANIPULATOR ist:
-
-- kompatibel zu PAIRING‑ROLE (7.2)
-- kompatibel zu PAIRING‑SYNC (7)
-- kompatibel zu PAIRING‑MAP (8)
-- kompatibel zu ATOM / HYPNOSE / MANA / DIAMANT
-- UNI‑neutral
-- Abweichungs‑fähig
-- Wirbel‑fähig
-- Langweil‑fähig
-- Pipeline‑fähig
-
-© iki1uc — Layer 7.3 MANIPULATOR
+NC.ANY = IHN — MANIPULATOR, DER MACHT
+  Start: direction {'x': 1, 'y': 0, 'z': 0} value 1 pos {'x': 0, 'y': 0, 'z': 0}
+  force_direction(0,1,0) -> {'x': 0, 'y': 1, 'z': 0} — jetzt greift es, Mann. direction, nicht dir.
+  force_value(9) -> 9 — value, nicht val.
+  move() -> {'x': 0, 'y': 9, 'z': 0} — pos bewegt sich: (0,9,0). Vorher: Nix bewegt, weil dir/val falsch.
+  NC.ANY-Bestimmung:
+    x=9 -> NC=6 -> NC(NC)=9 -> Abweichung? False
+    x=6 -> NC=9 -> NC(NC)=6 -> Abweichung? False
+    x=62 -> NC=-47 -> NC(NC)=62 -> Abweichung? False
+    x=729 -> NC=-714 -> NC(NC)=729 -> Abweichung? False
+    x=40 -> NC=-25 -> NC(NC)=40 -> Abweichung? False
+  detect_deviation(prev,nxt) = False — False = kein Wirbel, alles bestimmt.
+  detect_deviation(prev,gedreht) = True — True = Wirbel, Abweichung erkannt.
+  Wer braucht IHN? GEO braucht ihn für B/L, WURZEL braucht ihn für √q, MANIPULATOR braucht ihn für Bestimmung.
+  Wer braucht MANIPULATOR-alt? Niemand, Mann. Er macht nix. NC.ANY macht ihn.
+H=40 B=41 T=90 Q=57.0 F=1.425 D=3
+HALT = OFFEN — NC.ANY macht, aber 81er-Rückkopplung noch offen.
